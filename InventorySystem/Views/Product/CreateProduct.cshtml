@@ -1,0 +1,54 @@
+﻿@model InventorySystem.Models.Product
+
+@{
+    ViewData["Title"] = "CreateProduct";
+}
+
+<h1>CreateProduct</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row container min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="col-5">
+        <form asp-action="CreateProduct" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductQuantity" class="control-label"></label>
+                <input asp-for="ProductQuantity" class="form-control" />
+                <span asp-validation-for="ProductQuantity" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ImageUrl">Upload Image</label>
+                <input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" onchange="AddImage()" class="form-control" />
+            </div>
+            <div >
+                <input type="submit" value="Create" class="btn btn-outline-success mt-1" />
+                <a class="btn btn-outline-primary mt-1" asp-action="DisplayProduct"><b>Back to List</b></a>
+            </div>
+        </form>
+    </div>
+    <div class="col-5">
+        <img src="" id="empImage" style="object-fit: contain; max-width: 100%;" />
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+        function AddImage() {
+            const fileInput = document.getElementById('imageFormFile');
+            const empImage = document.getElementById('empImage');
+            if (fileInput.files && fileInput.files[0]) {
+                document.getElementById('empImage').src = URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+            }
+        }
+    </script>
+}
+
+

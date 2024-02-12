@@ -1,0 +1,57 @@
+﻿@model InventorySystem.Models.Product
+
+@{
+    ViewData["Title"] = "UpdateProduct";
+}
+
+<h1>UpdateProduct</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateProduct" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ProductName" class="control-label"></label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductQuantity" class="control-label"></label>
+                <input asp-for="ProductQuantity" class="form-control" />
+                <span asp-validation-for="ProductQuantity" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="ImageUrl">Upload Image</label>
+                <input type="file" name="imageFormFile" id="imageFormFile" accept=".png,.jpg" onchange="AddImage()" />
+            </div>
+            <div >
+                <input class="btn btn-outline-secondary mt-1" type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-outline-primary mt-1" asp-action="DisplayProduct"><b>Cancel</b></a>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="col-x">
+            <img src="@Model.ImageUrl" id="empImage" style="object-fit: contain; max-width: 100%;" />
+        </div>
+    </div>
+
+    <div class="col-5">
+        <img src="" id="empImage" style="object-fit: contain; max-width: 100%;" />
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function AddImage() {
+            const fileInput = document.getElementById('imageFormFile');
+            const empImage = document.getElementById('empImage');
+            if (fileInput.files && fileInput.files[0]) {
+                document.getElementById('empImage').src = URL.createObjectURL(document.getElementById('imageFormFile').files[0]);
+            }
+        }
+    </script>
+}

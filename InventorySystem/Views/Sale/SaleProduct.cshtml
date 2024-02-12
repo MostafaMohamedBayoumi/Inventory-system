@@ -1,0 +1,42 @@
+﻿@model InventorySystem.Models.Sale
+
+@{
+    ViewData["Title"] = "SaleProduct";
+}
+
+<h1>SaleProduct</h1>
+
+<h4>Sale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SaleProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SaleProduct">product Name</label>
+                <select asp-for="SaleProduct" asp-items="@ViewBag.ProductName" class="form-control">
+                    <option selected disabled>Select </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salequantity" class="control-label"></label>
+                <input asp-for="Salequantity" class="form-control" />
+                <span asp-validation-for="Salequantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaleDate" class="control-label"></label>
+                <input asp-for="SaleDate" class="form-control" />
+                <span asp-validation-for="SaleDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success mt-1" />
+                <a class="btn btn-outline-danger mt-1" asp-action="DisplaySales"><b>Cancel</b></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

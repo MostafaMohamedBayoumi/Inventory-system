@@ -1,0 +1,41 @@
+﻿@model IEnumerable<InventorySystem.Models.Product>
+
+@{
+    ViewData["Title"] = "DisplayProduct";
+}
+
+<h1>DisplayProduct</h1>
+
+<p>
+    <a class="btn btn-outline-success mt-1" asp-action="CreateProduct"><b>Create New</b></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                    <a class="btn btn-outline-secondary" asp-action="UpdateProduct" asp-route-id="@item.Id"><b>Edit</b></a>
+                    <a class="btn btn-outline-dark" asp-action="GetProduct" asp-route-id="@item.Id"><b>Details</b></a>
+                    <a class="btn btn-outline-danger" asp-action="DeleteProduct" asp-route-id="@item.Id"><b>Delete</b></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

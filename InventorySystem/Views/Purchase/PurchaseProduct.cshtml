@@ -1,0 +1,41 @@
+﻿@model InventorySystem.Models.Purchase
+
+@{
+    ViewData["Title"] = "PurchaseProduct";
+}
+
+
+<h1>PurchaseProduct</h1>
+
+<h4>Purchase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="PurchaseProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PurchaseProduct">product Name</label>
+                <select asp-for="PurchaseProduct" asp-items="@ViewBag.ProductName" class="form-control">
+                    <option selected disabled>Select</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseQuantity" class="control-label"></label>
+                <input asp-for="PurchaseQuantity" class="form-control" />
+                <span asp-validation-for="PurchaseQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurchaseDate" class="control-label"></label>
+                <input asp-for="PurchaseDate" class="form-control" />
+                <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+            </div>
+            
+            <div >
+                <input type="submit" value="Create" class="btn btn-outline-success mt-1" />
+                <a class="btn btn-outline-danger mt-1" asp-action="DisplayPurchase"><b>Cancel</b></a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

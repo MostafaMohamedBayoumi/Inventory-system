@@ -1,0 +1,47 @@
+﻿@model IEnumerable<InventorySystem.Models.Sale>
+
+@{
+    ViewData["Title"] = "DisplaySales";
+}
+
+<h1>DisplaySales</h1>
+
+<p>
+    <a class="btn btn-outline-success mt-1"  asp-action="SaleProduct">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SaleProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salequantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaleDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salequantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaleDate)
+            </td>
+            <td>
+                <a class="btn btn-outline-secondary"   asp-action="Edit" asp-route-id="@item.Id"><b>Edit</b></a> 
+                <a class="btn btn-outline-dark"   asp-action="Details" asp-route-id="@item.Id"><b>Details</b></a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><b>Delete</b></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

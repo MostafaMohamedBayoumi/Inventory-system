@@ -1,0 +1,37 @@
+﻿@model InventorySystem.Models.Product
+
+@{
+    ViewData["Title"] = "GetProduct";
+}
+
+<h1>GetProduct</h1>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProductQuantity)
+        </dd>
+
+        
+    </dl>
+</div>
+<div class="col-x">
+    <img src="@Model.ImageUrl" id="empImage" style="object-fit: contain; max-width: 100%;" />
+        </div>
+<div>
+    <a class="btn btn-outline-secondary" asp-action="UpdateProduct" asp-route-id="@Model?.Id"><b>Edit</b></a> 
+    <a class="btn btn-outline-success mt-1" asp-controller="Home" asp-action="Index"><b>Home</b></a>
+    <a class="btn btn-outline-primary mt-1" asp-action="DisplayProduct"><b>Back to List</b></a>
+    
+</div>
